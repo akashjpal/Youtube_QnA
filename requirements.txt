@@ -1,0 +1,9 @@
+openai
+langchain
+pypdf
+langchain-community
+youtube-transcript-api
+OpenAI
+streamlit
+qdrant-client
+tiktoken
