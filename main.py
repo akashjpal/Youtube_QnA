@@ -11,6 +11,18 @@ if not open_ai_key:
     st.write("Please enter your OPENAI_API_KEY")
     
 if url and query and open_ai_key:
-    db = lch.load_and_vectorize_data(url,open_ai_key)
-    res = get_the_answer(db,query,open_ai_key)
-    st.write(res['answer'])
+    db = lch.load_and_vectorize_data(url, open_ai_key)
+    res = lch.get_the_answer(db, query, open_ai_key)
+    
+    # Check if 'answer' key is present in the result dictionary
+    if 'answer' in res:
+        answer = res['answer']
+        
+        # Convert the answer to a string for display
+        answer_str = str(answer)
+        
+        # Print each line of the answer
+        for line in answer_str.split('\n'):
+            st.write(line)
+    else:
+        st.write("No answer found.")
